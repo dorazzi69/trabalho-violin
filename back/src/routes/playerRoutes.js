@@ -1,9 +1,6 @@
+
 import express from "express";
-import {
-  createPlayer,
-  getPlayers,
-  deletePlayer
-} from "./controllers/playerController.js";
+import { createPlayer, getPlayers, deletePlayer } from "../controllers/playerController.js";  // Caminho corrigido
 
 const router = express.Router();
 
