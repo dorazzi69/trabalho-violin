@@ -1,14 +1,44 @@
-document.body.innerHTML = `
-  <h1> Login do Avaliador</h1>
+"use client";
 
-  <div style="border:1px solid black; padding:10px;">
-    <input placeholder="Email"><br><br>
-    <input type="password" placeholder="Senha"><br><br>
+import { useState } from "react";
 
-    <button onclick="entrar()">Entrar</button>
-  </div>
-`;
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
+  const entrar = () => {
+    console.log({ email, senha });
+
+  };
+
+  return (
+    <div>
+      <h1>Craque ou Bagre</h1>
+
+      <div
+        style={{
+          border: "1px solid black",
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        /><br /><br />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+        /><br /><br />
+
+        <button onClick={entrar}>Entrar</button>
+      </div>
+    </div>
+  );
+}
 function entrar() {
   alert("Login realizado (simulação)");
   window.location.href = "/app";
