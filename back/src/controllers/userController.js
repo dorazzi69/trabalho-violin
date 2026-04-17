@@ -1,39 +1,24 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
+// registrar (POST)
 export const registrarUsuario = async (req, res) => {
-  const { email, senha } = req.body;
+  const user = await prisma.usuario.create({
+    data: req.body
+  });
 
-  try {
-    const usuario = await prisma.usuario.create({
-      data: {
-        email,
-        senha
-      }
-    });
-
-    res.json(usuario);
-  } catch (erro) {
-    res.json({ erro: "Erro ao cadastrar usuário" });
-  }
+  res.json(user);
 };
 
+// login (POST)
 export const loginUsuario = async (req, res) => {
-  const { email, senha } = req.body;
+  const user = await prisma.usuario.findUnique({
+    where: { email: req.body.email }
+  });
 
-  try {
-    const usuario = await prisma.usuario.findUnique({
-      where: {
-        email
-      }
-    });
-
-    if (!usuario || usuario.senha !== senha) {
-      return res.json({ erro: "Login inválido" });
-    }
-
-    res.json(usuario);
-  } catch (erro) {
-    res.json({ erro: "Erro ao fazer login" });
+  if (!user || user.senha !== req.body.senha) {
+    return res.json({ erro: "Login inválido" });
   }
+
+  res.json(user);
 };

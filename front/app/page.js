@@ -1,29 +1,26 @@
-import Link from "next/link";
+document.body.innerHTML = `
+  <h1> Sistema de Avaliação de Jogadores</h1>
 
-export default function HomePage() {
-  return (
-    <main className="min-h-screen flex flex-col items-center justify-center text-center bg-gray-200">
-      
-      <h1 className="text-4xl font-bold mb-4">Futebol App</h1>
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3 Avalie Jogadores</h3>
+    <p>Analise desempenho, habilidade e estatísticas dos jogadores.</p>
+  </div>
 
-      <p className="mb-6">
-        Aplicação para cadastro e comparação de jogadores.
-      </p>
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3> Login</h3>
+    <button onclick="irLogin()">Entrar</button>
+  </div>
 
-      <div className="flex gap-4">
-        <Link href="/login">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded">
-            Login
-          </button>
-        </Link>
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3> Cadastro</h3>
+    <button onclick="irCadastro()">Cadastrar</button>
+  </div>
+`;
 
-        <Link href="/cadastro">
-          <button className="bg-green-500 text-white px-4 py-2 rounded">
-            Cadastro
-          </button>
-        </Link>
-      </div>
+function irLogin() {
+  window.location.href = "/app/login";
+}
 
-    </main>
-  );
+function irCadastro() {
+  window.location.href = "/app/cadastro";
 }

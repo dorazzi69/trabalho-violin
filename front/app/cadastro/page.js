@@ -1,37 +1,36 @@
-"use client";
+document.body.innerHTML = `
+  <h1> Cadastro de Usuário</h1>
 
-export default function CadastroPage() {
-  return (
-    <main className="min-h-screen flex items-center justify-center bg-green-600">
-      
-      <div className="flex flex-col gap-3 p-6 bg-white rounded shadow w-80 border border-green-700">
-        <h1 className="text-2xl font-bold text-center text-green-700">
-          Cadastro
-        </h1>
+  <div style="border:1px solid black; padding:10px;">
+    <input placeholder="Nome"><br><br>
+    <input placeholder="Email"><br><br>
+    <input type="password" placeholder="Senha"><br><br>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="border p-2 rounded focus:outline-none focus:ring-1 focus:ring-green-600"
-        />
+    <button onclick="cadastrar()">Cadastrar</button>
+  </div>
 
-        <input
-          type="password"
-          placeholder="Senha"
-          className="border p-2 rounded focus:outline-none focus:ring-1 focus:ring-green-600"
-        />
+  <h2>⭐ Jogadores em Destaque</h2>
 
-        <input
-          type="password"
-          placeholder="Confirmar Senha"
-          className="border p-2 rounded focus:outline-none focus:ring-1 focus:ring-green-600"
-        />
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3>Neymar Jr</h3>
+    <p>Posição: Atacante</p>
+    <p>Nota: 9.0</p>
+  </div>
 
-        <button className="bg-green-700 text-white p-2 rounded hover:bg-green-800 transition">
-          Cadastrar
-        </button>
-      </div>
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3>Lionel Messi</h3>
+    <p>Posição: Atacante</p>
+    <p>Nota: 9.5</p>
+  </div>
 
-    </main>
-  );
+  <div style="border:1px solid black; padding:10px; margin:10px;">
+    <h3>Cristiano Ronaldo</h3>
+    <p>Posição: Atacante</p>
+    <p>Nota: 9.3</p>
+  </div>
+`;
+
+function cadastrar() {
+  alert("Cadastro realizado (simulação)");
+  window.location.href = "/app/login";
 }
