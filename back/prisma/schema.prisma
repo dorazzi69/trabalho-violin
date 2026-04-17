@@ -8,9 +8,9 @@ generator client {
 
 model User {
   id        String   @id @default(cuid())
-  name      String
+  nome      String
   email     String   @unique
-  password  String
+  senha  String
   createdAt DateTime @default(now())
 
   avaliacoes Avaliacao[]
@@ -18,25 +18,25 @@ model User {
 
 model Player {
   id        String   @id @default(cuid())
-  name      String
-  age       Int
-  position  String
-  team      String
-  country   String
+  nome      String
+  idade       Int
+  posicao  String
+  time     String
+  pais   String
   createdAt DateTime @default(now())
 
   avaliacoes Avaliacao[]
 }
 
 model Avaliacao {
-  id        String   @id @default(cuid())
-  rating    Int      // nota geral (0 a 10)
-  speed     Int      // velocidade
-  dribble   Int      // drible
-  pass      Int      // passe
-  defense   Int      // defesa
-  physical  Int      // físico
-  comment   String?
+  id            String   @id @default(cuid())
+  rating        Int      
+  velocidade    Int      
+  drible        Int      
+  passe         Int      
+  defesa        Int      
+  físico        Int      
+  comment       String?
 
   createdAt DateTime @default(now())
 

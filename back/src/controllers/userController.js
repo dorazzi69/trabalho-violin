@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-// registrar (POST)
 export const registrarUsuario = async (req, res) => {
   const user = await prisma.usuario.create({
     data: req.body
@@ -10,7 +9,7 @@ export const registrarUsuario = async (req, res) => {
   res.json(user);
 };
 
-// login (POST)
+
 export const loginUsuario = async (req, res) => {
   const user = await prisma.usuario.findUnique({
     where: { email: req.body.email }
