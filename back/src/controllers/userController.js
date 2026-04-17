@@ -1,36 +1,39 @@
-// src/controllers/userController.js
-
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export const register = async (req, res) => {
+export const registrarUsuario = async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    const user = await prisma.usuario.create({
-      data: { email, senha }
+    const usuario = await prisma.usuario.create({
+      data: {
+        email,
+        senha
+      }
     });
 
-    res.json(user);
-  } catch (err) {
-    res.status(400).json({ error: "Erro ao cadastrar usuário" });
+    res.json(usuario);
+  } catch (erro) {
+    res.json({ erro: "Erro ao cadastrar usuário" });
   }
 };
 
-export const login = async (req, res) => {
+export const loginUsuario = async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    const user = await prisma.usuario.findUnique({
-      where: { email }
+    const usuario = await prisma.usuario.findUnique({
+      where: {
+        email
+      }
     });
 
-    if (!user || user.senha !== senha) {
-      return res.status(401).json({ error: "Login inválido" });
+    if (!usuario || usuario.senha !== senha) {
+      return res.json({ erro: "Login inválido" });
     }
 
-    res.json(user);
-  } catch (err) {
-    res.status(400).json({ error: "Erro ao fazer login" });
+    res.json(usuario);
+  } catch (erro) {
+    res.json({ erro: "Erro ao fazer login" });
   }
 };

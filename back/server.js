@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express';                                                  
 import userRoutes from './src/routes/userRoutes.js';
 import playerRoutes from './src/routes/playerRoutes.js';
 
@@ -15,3 +15,5 @@ app.use('/players', playerRoutes);
 app.listen(3001, () => {
   console.log('Servidor rodando em http://localhost:3001');
 });
+
+console.log(process.env.DATABASE_URL);
